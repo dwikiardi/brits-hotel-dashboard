@@ -27,9 +27,10 @@
                 <table id="myTable" class="display" style="width:100%">
                     <thead>
                         <tr>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nomer</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal Login</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nomer</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal Login</th>
                         </tr>
                       </thead>
                     <tbody>
@@ -78,16 +79,13 @@
         var table = $('#myTable').DataTable({
             processing: true,
             serverSide: true,
-            layout: {
-        topStart: {
+            dom: 'Blfrtip',
             buttons: [
                 {
                     extend: 'excelHtml5',
                     title: 'Data Brits Hotel ' + currentDate
                 },
-            ]
-        }
-    },
+            ],
             ajax: {
                 url : "{{ route('tables.index') }}",
                 data: function (d) {
@@ -96,6 +94,7 @@
                 }
             },
             columns: [
+                  {data: 'id', name: 'id'},
                   {data: 'nama_user', name: 'nama_user'},
                   {
                     data: null,
