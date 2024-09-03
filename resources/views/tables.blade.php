@@ -74,7 +74,7 @@
         let min = $('#minDate').val()
         let max = $('#maxDate').val()
 
-        console.log(currentDate,min,max);
+        // console.log(currentDate,min,max);
 
         var table = $('#myTable').DataTable({
             processing: true,
@@ -102,7 +102,14 @@
                   },
                   {
                     data: null,
-                    render: (data) => data.created_at.slice(0,10)
+                    render : function (data, type, row) {
+                        if(row.created_at == null){
+                            return 0;
+                        } else {
+                            return row.created_at.slice(0,10);
+                        }
+                    //render: (data) => data.created_at
+                    }
                   },
               ],
           });

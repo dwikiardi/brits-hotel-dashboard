@@ -11,7 +11,7 @@ class TamuController extends Controller
 {
     public function index(Request $request)
     {
-        if(\request()->ajax()){
+        if(request()->ajax()){
             $data = Tamu::query();
 
             if ($request->filled('from_date') && $request->filled('to_date'))  {
@@ -20,7 +20,6 @@ class TamuController extends Controller
                 ->get();
                 // dd($data);
             }
-
             return DataTables::of($data)
                 ->make(true);
         }
